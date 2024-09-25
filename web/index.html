@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>艺术空间</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">ArtSpace</a>
+            <ul class="nav-links">
+                <li><a href="#about">关于</a></li>
+                <li><a href="#gallery">作品</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="hero">
+        <video autoplay muted loop id="hero-video">
+            <source src="pic/IMG_7071.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="container">
+                <h2>关于卡皮吧啦</h2>
+                <div class="about-content">
+                    <img src="pic/1.jpeg" alt="卡皮吧啦照片" class="artist-image">
+                    <div class="artist-bio">
+                        <p><strong>姓名：</strong>卡皮吧啦</p>
+                        <p><strong>年龄：</strong>3岁</p>
+                        <p><strong>特长：</strong>许愿暴富，效果堪比开挂！</p>
+                        <p><strong>籍贯：</strong>巴西东部的雨林深处，湿气满满的快乐小镇</p>
+                        
+                        <h3>性格</h3>
+                        <p>天真乐观，喜欢四处撒播好运。偶尔带点小淘气，却总是能在关键时刻让人惊喜连连。言语幽默风趣，内心却充满责任感，立志成为财富的传递者。</p>
+                        
+                        <h3>简介</h3>
+                        <p>年仅3岁的卡皮吧啦，已被誉为巴西东部最灵验的"财富召唤者"。通过许愿，能为人带来财富与好运，无论是金币、宝石，还是美食，都能迅速实现。魔力精准且强大，广受信赖，财富如南美河流般汹涌而至，成就梦想的速度令人惊叹。卡皮吧啦，不可错过的幸运缔造者。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery">
+            <div class="container">
+                <h2>精选作品</h2>
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="pic/IMG_7059.jpeg" class="d-block w-100" alt="照片1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="pic/screenshot.png" class="d-block w-100" alt="照片2">
+                        </div>
+                    </div>
+                </div>
+                <p class="gallery-caption">在这里每一只卡比巴拉都能快乐的躺平</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>联系艺术家</h2>
+                <form id="contact-form">
+                    <input type="text" name="name" placeholder="您的姓名" required>
+                    <input type="email" name="email" placeholder="您的邮箱" required>
+                    <textarea name="message" placeholder="您的留言" required></textarea>
+                    <button type="submit">发送</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>&copy; 2024 ArtSpace. 保留所有权利。</p>
+        </div>
+    </footer>
+
+    <div id="app">
+        <div id="ai-chat-button" @click="toggleChat">
+            <i class="fas fa-comments"></i>
+        </div>
+
+        <div id="ai-chat-modal" v-if="isChatOpen">
+            <div class="chat-header">
+                <h3>AI 艺术助手</h3>
+                <button @click="toggleChat"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="chat-messages">
+                <div v-for="message in messages" :key="message.id" :class="{'user-message': message.isUser, 'ai-message': !message.isUser}">
+                    {{ message.content }}
+                </div>
+            </div>
+            <div class="chat-input">
+                <input v-model="newMessage" @keyup.enter="sendMessage" placeholder="询问关于艺术的任何问题...">
+                <button @click="sendMessage"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.31/dist/vue.global.prod.js"></script>
+    <script src="../app.js"></script>
+</body>
+</html>
